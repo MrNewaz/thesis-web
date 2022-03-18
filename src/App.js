@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { blue, amber } from '@mui/material/colors'
+import { CssBaseline } from '@mui/material'
+import AppRoutes from 'Routes'
+import ScrollToTop from 'utils/ScrollToTop'
+import Navbar from 'components/Navbar'
 
-function App() {
+const App = ({ darkmode = false }) => {
+  const theme = createTheme({
+    palette: {
+      mode: darkmode ? 'dark' : 'light',
+      primary: blue,
+      secondary: amber,
+      // text: {
+      //   primary: '#888',
+      //   secondary: '#DDDDDD',
+      // },
+      // background: {
+      //   default: '#1d1b19',
+      //   paper: '#181715',
+      // },
+    },
+    typography: {
+      fontFamily: 'Quicksand',
+      fontWeightLight: 400,
+      fontWeightRegular: 500,
+      fontWeightMedium: 600,
+      fontWeightBold: 700,
+      button: {
+        textTransform: 'none',
+      },
+    },
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
+      <ScrollToTop />
+      <Navbar />
+      <AppRoutes />
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
