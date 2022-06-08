@@ -6,6 +6,7 @@ import axios from 'axios'
 import { DropzoneArea } from 'material-ui-dropzone'
 import { useState } from 'react'
 import { CircularProgress } from '@mui/material'
+// import Boundingbox from 'react-bounding-box'
 
 const DropZone = () => {
   const [file, setFile] = useState(null)
@@ -40,6 +41,12 @@ const DropZone = () => {
   }
 
   console.log(file)
+
+  // const params = {
+  //   image:
+  //     'https://images.unsplash.com/photo-1612831660296-0cd5841b89fb?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80',
+  //   boxes: [[100, 100, 250, 250]],
+  // }
   return (
     <Box my={6}>
       <DropzoneArea
@@ -78,6 +85,11 @@ const DropZone = () => {
       )}
       {result !== [] && loading === false && (
         <Paper sx={{ mt: 3, p: 1 }}>
+          {/* <Boundingbox
+            image={file}
+            boxes={params.boxes}
+            options={params.options}
+          /> */}
           <Typography
             gutterBottom
             variant='h4'
